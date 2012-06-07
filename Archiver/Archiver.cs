@@ -31,8 +31,8 @@ namespace T_Starter.Archiver {
 			try {
 				archiver.Extract(file);
 			}
-			catch (Exception) {
-				throw new ArchiveException();
+			catch (Exception ex) {
+				throw new ArchiveException(ex);
 			}
 		}
 	}

@@ -160,8 +160,8 @@ namespace T_Starter {
 					MessageBox.Show(this, "Could not start T2002E.exe - please install T2002 and the T2002-level-editor and put the T Starter in it's directory.", "Error");
 				}
 			}
-			catch (Archiver.ArchiveException) {
-				MessageBox.Show(this, "Please install a recent version of 7-Zip or WinRAR or put the T Starter 7-Zip-directory in the T2002-directory to use compressed level-packs.", "Error");
+			catch (Archiver.ArchiveException ex) {
+				MessageBox.Show(this, "Archive exception: " + ex.Message, "Error");
 			}
 			catch (System.ComponentModel.Win32Exception) {
 				MessageBox.Show(this, "Could not start T2002E.exe - please install T2002 and the T2002-level-editor and put the T Starter in it's directory.", "Error");
