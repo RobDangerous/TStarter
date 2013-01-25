@@ -61,7 +61,7 @@ namespace T_Starter {
 			this.comboBox1.Location = new System.Drawing.Point(11, 8);
 			this.comboBox1.MaxDropDownItems = 16;
 			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(168, 21);
+			this.comboBox1.Size = new System.Drawing.Size(178, 21);
 			this.comboBox1.TabIndex = 0;
 			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
 			// 
@@ -94,7 +94,7 @@ namespace T_Starter {
 			// button2
 			// 
 			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button2.Location = new System.Drawing.Point(104, 75);
+			this.button2.Location = new System.Drawing.Point(114, 75);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 4;
@@ -105,14 +105,14 @@ namespace T_Starter {
 			// 
 			this.progressBar1.Location = new System.Drawing.Point(11, 10);
 			this.progressBar1.Name = "progressBar1";
-			this.progressBar1.Size = new System.Drawing.Size(168, 17);
+			this.progressBar1.Size = new System.Drawing.Size(178, 17);
 			this.progressBar1.TabIndex = 5;
 			this.progressBar1.Visible = false;
 			// 
 			// Form1
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(192, 103);
+			this.ClientSize = new System.Drawing.Size(202, 103);
 			this.Controls.Add(this.progressBar1);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.date);
@@ -124,7 +124,7 @@ namespace T_Starter {
 			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "T Starter 2.7";
+			this.Text = "T Starter 2.8";
 			this.ResumeLayout(false);
 
 		}
