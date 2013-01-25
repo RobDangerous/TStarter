@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace T_Starter {
 	public class Form1 : System.Windows.Forms.Form {
@@ -142,6 +143,26 @@ namespace T_Starter {
 			bool mutexWasCreated;
 			mut = new Mutex(true, "T Starter 2", out mutexWasCreated);
 			if (!mutexWasCreated) return;
+
+			try {
+				XmlDocument doc = new XmlDocument();
+				doc.Load("T2002Levels.xml");
+				OnlineLevels.levels.Clear();
+				var nodes = doc.GetElementsByTagName("Level");
+				foreach (XmlNode node in nodes) {
+					string levelname = node.Attributes.GetNamedItem("name").Value;
+
+					OnlineLevel level = new OnlineLevel();
+					level.name = levelname;
+					level.author = node.Attributes.GetNamedItem("author").Value;
+					level.date = node.Attributes.GetNamedItem("date").Value;
+					OnlineLevels.levels.Add(level);
+				}
+			}
+			catch (Exception) {
+
+			}
+
 			Application.EnableVisualStyles();
 			Application.Run(Instance = new Form1());
 		}
@@ -169,7 +190,7 @@ namespace T_Starter {
 		}
 
 		private void comboBox1_SelectedIndexChanged(object sender, System.EventArgs e) {
-            if (comboBox1.SelectedItem is LevelPack) {
+			if (comboBox1.SelectedItem is LevelPack) {
 				LevelPack pack = (LevelPack) comboBox1.SelectedItem;
 				author.Text = "Author: " + pack.Author;
 				date.Text = "Date: " + pack.Date;

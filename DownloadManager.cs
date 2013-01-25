@@ -100,13 +100,21 @@ namespace T_Starter {
 			System.IO.Stream streamReceive = myResponse.GetResponseStream();
 			System.Text.Encoding encoding = System.Text.Encoding.GetEncoding("ISO-8859-1");
 			System.IO.StreamReader streamRead = new System.IO.StreamReader(streamReceive, encoding);
-
+			
 			List<T2002Level> remoteLevels = new List<T2002Level>();
 			XmlDocument doc = new XmlDocument();
 			doc.Load(streamRead);
+			OnlineLevels.levels.Clear();
 			var nodes = doc.GetElementsByTagName("Level");
 			foreach (XmlNode node in nodes) {
 				string levelname = node.Attributes.GetNamedItem("name").Value;
+				
+				OnlineLevel level = new OnlineLevel();
+				level.name = levelname;
+				level.author = node.Attributes.GetNamedItem("author").Value;
+				level.date = node.Attributes.GetNamedItem("date").Value;
+				OnlineLevels.levels.Add(level);
+
 				List<Entry> entries = new List<Entry>();
 				foreach (XmlNode entrynode in node.ChildNodes) {
 					var entry = new Entry(entrynode.Attributes.GetNamedItem("name").Value, long.Parse(entrynode.Attributes.GetNamedItem("crc").Value));
@@ -114,6 +122,9 @@ namespace T_Starter {
 				}
 				remoteLevels.Add(new T2002Level(levelname, entries));
 			}
+
+			doc.Save("T2002Levels.xml");
+			
 			/*
 			string page = streamRead.ReadToEnd();
 			int start = 0;

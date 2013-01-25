@@ -19,22 +19,16 @@ namespace T_Starter {
 		
 		protected void Parse(string filename) {
 			try {
-				name = filename.Substring(0, filename.Length - 11);
-				if (name == "bigworld_Christian_C_Werdehausen") {
-					author = "CWerdehausen";
-					name = "Bigworld";
+				name = filename;
+				foreach (var level in OnlineLevels.levels) {
+					if (level.name == name + ".zip") {
+						author = level.author;
+						DateTime jan1970 = new DateTime(1970, 1, 2);
+						DateTime time = jan1970.AddMilliseconds(double.Parse(level.date));
+						date = time.ToShortDateString();
+						break;
+					}
 				}
-				else if (name == "Underearth-part1") {
-					author = "Bronko";
-					name = "Underearth part1";
-				}
-				else {
-					author = name.Substring(name.LastIndexOf('_') + 1);
-					author = ReplaceBars(author);
-					name = name.Substring(0, name.LastIndexOf('_'));
-					name = ReplaceBars(name);
-				}
-				date = filename.Substring(filename.Length - 10).Replace("-", ".");
 			}
 			catch (Exception) {
 				name = filename;

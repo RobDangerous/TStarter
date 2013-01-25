@@ -123,6 +123,8 @@
     <Compile Include="Log.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OnlineLevel.cs" />
+    <Compile Include="OnlineLevels.cs" />
     <Compile Include="Task\ArchiveExtractor.cs" />
     <Compile Include="Task\DirectoryCreator.cs" />
     <Compile Include="Task\DirRenamer.cs" />
