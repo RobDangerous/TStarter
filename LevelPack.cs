@@ -47,12 +47,11 @@ namespace T_Starter {
 			return name;
 		}
 
-		public abstract void Load();
+		public abstract Process Load();
 
-		protected void Start(DirectoryInfo dir) {
+		protected Process Start(DirectoryInfo dir) {
 			if (dir.GetFiles().Length == 0 && dir.GetDirectories().Length == 1) {
-				Start(dir.GetDirectories()[0]);
-				return;
+				return Start(dir.GetDirectories()[0]);
 			}
 			bool inifound = false;
 			bool fexefound = false;
@@ -60,7 +59,7 @@ namespace T_Starter {
 			foreach(DirectoryInfo nextdir in dir.GetDirectories()) {
 				if (nextdir.Name.ToLower() == "lvl") {
 					CreateDirRenamer(nextdir.FullName, "Lvl");
-					if (File.Exists(nextdir.FullName + "\\level.ini")) inifound = true;
+					if (File.Exists(nextdir.FullName + "\\Level.ini")) inifound = true;
 				}
 				else if (nextdir.Name.ToLower() == "gfx") {
 					CreateDirRenamer(nextdir.FullName, "GFX");
@@ -75,19 +74,20 @@ namespace T_Starter {
 				if (Directory.Exists(dir.FullName + "\\Lvl"))
 					new Task.IniCreator(new DirectoryInfo(dir.FullName + "\\Lvl").GetFiles("*.lv6"));
 				else new Task.IniCreator(dir.GetFiles("*.lv6"));
-				CreateRenamer(@"Bonus\temp\level.ini", @"Lvl\", "level.ini");
+				CreateRenamer(@"Bonus\temp\Level.ini", @"Lvl\", "Level.ini");
 			}
 			Task.TaskManager.DoAll();
 			Process t2002;
 			if (fexefound) t2002 = Process.Start("T2002F.exe");
 			else t2002 = Process.Start("T2002E.exe");
+			return t2002;
 		}
 
 		private void RenameFiles(DirectoryInfo dir, ref bool inifound, ref bool fexefound) {
 			foreach (FileInfo file in dir.GetFiles()) {
 				if (file.Name.ToLower() == "level.ini") {
 					inifound = true;
-					CreateRenamer(file.FullName, "Lvl\\", "level.ini");
+					CreateRenamer(file.FullName, "Lvl\\", "Level.ini");
 				}
 				else if (file.Name.ToLower() == "t2002f.exe") {
 					fexefound = true;

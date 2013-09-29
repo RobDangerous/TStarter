@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.IO;
 
 namespace T_Starter {
@@ -9,12 +10,12 @@ namespace T_Starter {
 			Parse(file.Name.Substring(0, file.Name.LastIndexOf('.')));
 		}
 
-		public override void Load() {
+		public override Process Load() {
 			Task.TaskManager.UndoAll();
 			new Task.DirectoryCreator("Bonus\\temp");
 			new Task.ArchiveExtractor(file);
 			Task.TaskManager.DoAll();
-			Start(new DirectoryInfo("Bonus\\temp"));
+			return Start(new DirectoryInfo("Bonus\\temp"));
 		}
 	}
 }

@@ -124,7 +124,7 @@ namespace T_Starter {
 			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "T Starter 2.8";
+			this.Text = "T Starter 2.9";
 			this.ResumeLayout(false);
 
 		}
@@ -139,10 +139,21 @@ namespace T_Starter {
 		 */
 
 		[STAThread]
-		static void Main() {
+		static void Main(string[] args) {
 			bool mutexWasCreated;
 			mut = new Mutex(true, "T Starter 2", out mutexWasCreated);
 			if (!mutexWasCreated) return;
+
+			if (args.Length > 0) {
+				try {
+					var pack = new DirectoryPack(new DirectoryInfo("Bonus\\" + args[0]));
+					var process = pack.Load();
+					process.WaitForExit();
+				}
+				catch (Exception) { }
+				CleanUp();
+				return;
+			}
 
 			try {
 				XmlDocument doc = new XmlDocument();
@@ -238,10 +249,14 @@ namespace T_Starter {
 			}
 		}
 
-		private void Form1_Closing(object sender, CancelEventArgs e) {
+		private static void CleanUp() {
 			Task.TaskManager.UndoAll();
 			Log.Close();
 			mut.ReleaseMutex();
+		}
+
+		private void Form1_Closing(object sender, CancelEventArgs e) {
+			CleanUp();
 		}
 
 		public void SetPercentage(float percentage)

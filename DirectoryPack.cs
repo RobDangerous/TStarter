@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Diagnostics;
 
 namespace T_Starter {
 	class DirectoryPack : LevelPack {
@@ -12,11 +13,11 @@ namespace T_Starter {
 			Parse(dir.Name);
 		}
 
-		public override void Load() {
+		public override Process Load() {
 			Task.TaskManager.UndoAll();
 			new Task.DirectoryCreator("Bonus\\temp");
 			Task.TaskManager.DoAll();
-			Start(dir);
+			return Start(dir);
 		}
 	}
 }
