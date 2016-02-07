@@ -77,10 +77,7 @@ namespace T_Starter {
 				CreateRenamer(@"Bonus\temp\Level.ini", @"Lvl\", "Level.ini");
 			}
 			Task.TaskManager.DoAll();
-			Process t2002;
-			if (fexefound) t2002 = Process.Start("T2002F.exe");
-			else t2002 = Process.Start("T2002E.exe");
-			return t2002;
+			return Process.Start("T2002.exe");
 		}
 
 		private void RenameFiles(DirectoryInfo dir, ref bool inifound, ref bool fexefound) {

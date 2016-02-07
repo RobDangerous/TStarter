@@ -61,7 +61,7 @@ namespace T_Starter {
 			this.comboBox1.Location = new System.Drawing.Point(11, 8);
 			this.comboBox1.MaxDropDownItems = 16;
 			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(178, 21);
+			this.comboBox1.Size = new System.Drawing.Size(232, 21);
 			this.comboBox1.TabIndex = 0;
 			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
 			// 
@@ -94,7 +94,7 @@ namespace T_Starter {
 			// button2
 			// 
 			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.button2.Location = new System.Drawing.Point(114, 75);
+			this.button2.Location = new System.Drawing.Point(168, 75);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 4;
@@ -105,14 +105,14 @@ namespace T_Starter {
 			// 
 			this.progressBar1.Location = new System.Drawing.Point(11, 10);
 			this.progressBar1.Name = "progressBar1";
-			this.progressBar1.Size = new System.Drawing.Size(178, 17);
+			this.progressBar1.Size = new System.Drawing.Size(232, 17);
 			this.progressBar1.TabIndex = 5;
 			this.progressBar1.Visible = false;
 			// 
 			// Form1
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(202, 103);
+			this.ClientSize = new System.Drawing.Size(256, 103);
 			this.Controls.Add(this.progressBar1);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.date);
@@ -124,7 +124,7 @@ namespace T_Starter {
 			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "T Starter 2.9";
+			this.Text = "T Starter 3.0";
 			this.ResumeLayout(false);
 
 		}
@@ -141,7 +141,7 @@ namespace T_Starter {
 		[STAThread]
 		static void Main(string[] args) {
 			bool mutexWasCreated;
-			mut = new Mutex(true, "T Starter 2", out mutexWasCreated);
+			mut = new Mutex(true, "T Starter 3", out mutexWasCreated);
 			if (!mutexWasCreated) return;
 
 			if (args.Length > 0) {
@@ -186,17 +186,17 @@ namespace T_Starter {
 			catch (InvalidCastException) {
 				try {
 					Task.TaskManager.UndoAll();
-					Process.Start("T2002E.exe");
+					Process.Start("T2002.exe");
 				}
 				catch (System.ComponentModel.Win32Exception) {
-					MessageBox.Show(this, "Could not start T2002E.exe - please install T2002 and the T2002-level-editor and put the T Starter in it's directory.", "Error");
+					MessageBox.Show(this, "Could not start T2002.exe.", "Error");
 				}
 			}
 			catch (Archiver.ArchiveException ex) {
 				MessageBox.Show(this, "Archive exception: " + ex.Message, "Error");
 			}
 			catch (System.ComponentModel.Win32Exception) {
-				MessageBox.Show(this, "Could not start T2002E.exe - please install T2002 and the T2002-level-editor and put the T Starter in it's directory.", "Error");
+				MessageBox.Show(this, "Could not start T2002.exe.", "Error");
 			}
 		}
 
