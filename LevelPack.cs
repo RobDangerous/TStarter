@@ -76,6 +76,9 @@ namespace T_Starter {
 				else new Task.IniCreator(dir.GetFiles("*.lv6"));
 				CreateRenamer(@"Bonus\temp\Level.ini", @"Lvl\", "Level.ini");
 			}
+			else {
+				new Task.IniFixer();
+			}
 			Task.TaskManager.DoAll();
 			return Process.Start("T2002.exe");
 		}
@@ -91,7 +94,7 @@ namespace T_Starter {
 					CreateRenamer(file.FullName, "", file.Name);
 				}
 				else if (file.Name.EndsWith(".bmp") || file.Name.EndsWith(".bl6") || file.Name.EndsWith(".lv6")) CreateRenamer(file.FullName, "Lvl\\", file.Name);
-				else if (file.Name.EndsWith(".psm") || file.Name.EndsWith(".mp3")) CreateRenamer(file.FullName, "Music\\", file.Name);
+				else if (file.Name.EndsWith(".psm") || file.Name.EndsWith(".mp3")) CreateRenamer(file.FullName, "Music\\", file.Name.Substring(0, file.Name.LastIndexOf('.')) + ".mp3");
 			}
 		}
 

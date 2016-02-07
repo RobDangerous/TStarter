@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace T_Starter.Task {
 	public class TaskManager {
-		const string securityfile = "ts29rescue.dat";
+		const string securityfile = "ts30rescue.dat";
 		static IList<ITask> todo = new List<ITask>();
 		static Stack<ITask> done = new Stack<ITask>();
 

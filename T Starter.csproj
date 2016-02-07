@@ -129,6 +129,7 @@
     <Compile Include="Task\DirectoryCreator.cs" />
     <Compile Include="Task\DirRenamer.cs" />
     <Compile Include="Task\IniCreator.cs" />
+    <Compile Include="Task\IniFixer.cs" />
     <Compile Include="Task\ITask.cs" />
     <Compile Include="Task\Renamer.cs" />
     <Compile Include="Task\TaskManager.cs" />

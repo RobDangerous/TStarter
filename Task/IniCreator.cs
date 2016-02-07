@@ -31,7 +31,7 @@ namespace T_Starter.Task {
 					ini.WriteLine("[Level" + (i + 1) + "]");
 					ini.WriteLine("Name=" + level.Name);
 					ini.WriteLine("Back=Bg_black.bmp");
-					ini.WriteLine("Music=L_bonus.psm");
+					ini.WriteLine("Music=L_bonus.mp3");
 					ini.WriteLine("Tfmx=T31.tfx");
 					ini.WriteLine("Sub=2");
 				}
